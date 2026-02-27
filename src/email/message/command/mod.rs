@@ -77,7 +77,7 @@ impl MessageSubcommand {
     pub async fn execute(self, printer: &mut impl Printer, config: &TomlConfig) -> Result<()> {
         match self {
             Self::Read(cmd) => cmd.execute(printer, config).await,
-            Self::Export(cmd) => cmd.execute(config).await,
+            Self::Export(cmd) => cmd.execute(printer, config).await,
             Self::Thread(cmd) => cmd.execute(printer, config).await,
             Self::Write(cmd) => cmd.execute(printer, config).await,
             Self::Reply(cmd) => cmd.execute(printer, config).await,
